@@ -4,12 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sample Page</title>
-<script>
-  window.onload = function() {
-    // JavaScript code to display a message
-    var message = "Hello, World!";
-    alert(message);
-  };
+<script>getFileContent();
+  function getFileContent() {
+  fetch('/getFileContent')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('fileContent').innerText = data;
+    })
+    .catch(error => {
+      console.error('Error fetching file content:', error);
+    });
+}
 </script>
 </head>
 <body>
