@@ -18,9 +18,8 @@ function addEmail() {
   const data = new FormData();
   data.append('email', email);
 
-  fetch('add_email.php', {
-    method: 'POST',
-    body: data
+  fetch('http://emaildatabas.mooo.com/api.php?email='+email, {
+    method: 'GET',
   })
   .then(response => {
     if (!response.ok) {
